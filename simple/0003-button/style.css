@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: hsl(30, 60%, 18%);
+  background-image: radial-gradient(circle at center, hsl(30, 60%, 22%) 0%, hsl(30, 60%, 18%) 70%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.button-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.magnetic-button {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.button-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 22px 48px;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, hsl(30, 60%, 50%), hsl(30, 60%, 55%));
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 8px 32px hsla(30, 60%, 50%, 0.25);
+}
+
+.button-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsl(30, 60%, 55%), hsl(30, 60%, 50%));
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+.button-content::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -200%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: rotate(45deg);
+}
+
+.magnetic-button:hover .button-content::before {
+  opacity: 1;
+}
+
+.magnetic-button:hover .button-content::after {
+  animation: shine 0.6s;
+}
+
+.magnetic-button:hover .button-content {
+  box-shadow: 0 12px 48px hsla(30, 60%, 50%, 0.35), 0 0 60px hsla(30, 60%, 50%, 0.25);
+  transform: translateY(-2px);
+}
+
+.magnetic-button:hover .button-content i {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.button-content i {
+  transition: transform 0.3s;
+}
+
+@keyframes shine {
+  to {
+    left: 200%;
+  }
+}
+
+.component-title {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
+}
+
+.component-title:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
+}
